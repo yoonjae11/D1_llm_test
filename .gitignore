@@ -131,8 +131,8 @@ credentials.json
 _dist/
 _snapshots/
 .omc/
-# Evaluation inputs that contain measured health values stay local
-Objective_Query_*.xlsx
+# PHIA question/answer workbook is versioned (no user identifiers)
+!/Objective_Query_-_PHIA_v3.xlsx
 # Versioned on purpose: evaluation guide, placeholder-only eval settings, offline token test
 !/README_PHIA_EVAL_KR.md
 !/local.settings.eval.sample.json
