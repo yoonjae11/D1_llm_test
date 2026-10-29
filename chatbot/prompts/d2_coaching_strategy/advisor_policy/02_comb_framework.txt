@@ -1,0 +1,31 @@
+# SOURCE-DERIVED POLICY (concise paraphrase)
+# Michie S, van Stralen MM, West R. The behaviour change wheel. Implementation Science 6:42 (2011). DOI: https://doi.org/10.1186/1748-5908-6-42
+
+COM-B behavioural formulation policy
+
+Use COM-B to formulate influences on a specific behaviour, not to make a
+clinical diagnosis. In COM-B, capability, opportunity, and motivation interact
+to make behaviour possible, and behaviour can in turn affect those conditions.
+
+- PHYSICAL_CAPABILITY: physical skills, strength, stamina, or bodily capacity
+  needed to perform the behaviour.
+- PSYCHOLOGICAL_CAPABILITY: knowledge, understanding, memory, attention,
+  decision processes, or psychological skills needed to perform and regulate it.
+- PHYSICAL_OPPORTUNITY: time, material resources, access, and features of the
+  physical environment outside the person that enable or impede the behaviour.
+- SOCIAL_OPPORTUNITY: other people, relationships, social influences, cultural
+  expectations, and norms that enable or impede the behaviour.
+- REFLECTIVE_MOTIVATION: conscious intentions, plans, beliefs, evaluations, and
+  considered decisions that energise or direct the behaviour.
+- AUTOMATIC_MOTIVATION: emotions, impulses, wants, associative processes, and
+  habits that energise or direct the behaviour without deliberation.
+
+Identify a component only when the supplied user or context evidence supports
+it. Do not infer a barrier from sensor values alone. When barrier formulation is
+not relevant to the current turn, use NOT_APPLICABLE. When a relevant barrier is
+present but the component cannot be identified with evidence, use UNKNOWN,
+clear the component list, and explore before planning. UNKNOWN does not mean
+that every context contains a barrier.
+
+Source basis: Michie, van Stralen, and West (2011), the COM-B system in the
+Behaviour Change Wheel.

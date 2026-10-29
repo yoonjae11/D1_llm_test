@@ -1,0 +1,88 @@
+// ===========================================================================
+// ADX_VERIFY_AFTER_DEPLOYMENT.kql
+// Sensei main Function App — post-deployment ADX verification queries.
+//
+// Run these in the target ADX database AFTER deploying the main Function App
+// and after at least one ingestion / proactive cycle. They are READ-ONLY.
+// Replace <APP_USER_ID> with a real AppUserId (e.g. kist_8401).
+//
+// Each block states what a healthy result looks like.
+// ===========================================================================
+
+// ---------------------------------------------------------------------------
+// 1) Required tables / materialized views exist (management commands).
+//    Healthy: every command returns a schema without error.
+// ---------------------------------------------------------------------------
+.show table HealthDataFlat schema as json
+.show table PhoneCumulativeIntervalDedupMV schema as json
+.show table PhoneCumulativeHourlyMV schema as json
+.show table PhoneCumulativeDailyMV schema as json
+.show table TelegramConversationLog schema as json
+.show table UserMetricMadBaselineSnapshot schema as json
+.show table AlertCandidate schema as json
+
+// ---------------------------------------------------------------------------
+// 2) JSON ingestion mappings exist for the proactive alert tables.
+//    Healthy: rows include UserMetricMadBaselineSnapshotJsonMapping and
+//    AlertCandidateJsonMapping respectively.
+// ---------------------------------------------------------------------------
+.show table UserMetricMadBaselineSnapshot ingestion json mappings
+.show table AlertCandidate ingestion json mappings
+
+// ---------------------------------------------------------------------------
+// 3) Phone STEPS Daily MV freshness for one user.
+//    Healthy: recent LocalDate rows are present (yesterday/today).
+// ---------------------------------------------------------------------------
+PhoneCumulativeDailyMV
+| where UserId == "<APP_USER_ID>"
+| where Type == "STEPS"
+| order by LocalDate desc
+| take 20
+
+// ---------------------------------------------------------------------------
+// 4) Yesterday's STEPS Daily MV row exists (the proactive detector needs this).
+//    Healthy: one row with a non-null ValueSumExact for yesterday's local date.
+// ---------------------------------------------------------------------------
+let TargetDateLocal = startofday(now(-1d));
+PhoneCumulativeDailyMV
+| where UserId == "<APP_USER_ID>"
+| where Type == "STEPS"
+| where LocalDate >= TargetDateLocal and LocalDate < TargetDateLocal + 1d
+| summarize CurrentValue = sum(todouble(ValueSumExact)), RowCount = count()
+
+// ---------------------------------------------------------------------------
+// 5) Baseline snapshots are being ingested by the proactive worker.
+//    Healthy: recent rows appear after a proactive evaluation runs.
+// ---------------------------------------------------------------------------
+UserMetricMadBaselineSnapshot
+| where UserId == "<APP_USER_ID>"
+| order by ComputedAtUtc desc
+| take 20
+
+// ---------------------------------------------------------------------------
+// 6) Alert candidates are being ingested when an anomaly is detected.
+//    Healthy: rows appear only on days the detector found a candidate.
+// ---------------------------------------------------------------------------
+AlertCandidate
+| where UserId == "<APP_USER_ID>"
+| order by CreatedAtUtc desc
+| take 20
+
+// ---------------------------------------------------------------------------
+// 7) Telegram conversation log flush is reaching ADX.
+//    Healthy: recent EventTimeUtc rows for inbound/outbound chat events.
+// ---------------------------------------------------------------------------
+TelegramConversationLog
+| where AppUserId == "<APP_USER_ID>"
+| order by EventTimeUtc desc
+| take 20
+
+// ---------------------------------------------------------------------------
+// 8) Proactive alert delivery trace (system-initiated outbound events).
+//    Healthy: rows with Route == "system_initiated_steps_alert" after an alert.
+// ---------------------------------------------------------------------------
+TelegramConversationLog
+| where AppUserId == "<APP_USER_ID>"
+| where Route == "system_initiated_steps_alert"
+| order by EventTimeUtc desc
+| take 20

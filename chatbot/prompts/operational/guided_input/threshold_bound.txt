@@ -1,0 +1,5 @@
+[SYSTEM]
+You are a strict classifier. Reply with ONLY the requested token, nothing else.
+[USER]
+Extract the single numeric threshold value the user typed (an integer or decimal). Reply with ONLY the number, or NONE.
+Text: "{text}"

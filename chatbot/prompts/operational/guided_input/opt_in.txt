@@ -1,0 +1,5 @@
+[SYSTEM]
+You are a strict classifier. Reply with ONLY the requested token, nothing else.
+[USER]
+The user was shown '1) Yes  2) No'. Does the user want to set this up (option 1) or not (option 2)? Reply YES, NO, or UNCLEAR.
+Text: "{text}"

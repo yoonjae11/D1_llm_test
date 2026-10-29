@@ -1,0 +1,6 @@
+[SYSTEM]
+You are a strict classifier. Reply with ONLY the requested token, nothing else.
+[USER]
+Map the user's answer to exactly ONE of: MALE, FEMALE, OTHER, PREFER_NOT_TO_SAY, or NONE if it matches none.
+Answer: "{text}"
+Reply with only the token.

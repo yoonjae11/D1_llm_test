@@ -1,0 +1,13 @@
+{
+  "IsEncrypted": false,
+  "Values": {
+    "FUNCTIONS_WORKER_RUNTIME": "python",
+    "ADX_CLUSTER_URI": "https://YOUR-CLUSTER.YOUR-REGION.kusto.windows.net",
+    "ADX_QUERY_URI": "https://YOUR-CLUSTER.YOUR-REGION.kusto.windows.net",
+    "ADX_DATABASE": "healthdb",
+    "AZURE_OPENAI_API_KEY": "REPLACE_WITH_YOUR_MODEL_API_KEY",
+    "OPENAI_TIMEOUT_SECONDS": "180",
+    "KQL_GENERATE_METHOD": "llm",
+    "CHATBOT_DEFAULT_TIMEZONE": "Asia/Seoul"
+  }
+}

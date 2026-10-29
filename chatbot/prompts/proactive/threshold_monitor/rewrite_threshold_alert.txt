@@ -1,0 +1,5 @@
+Rewrite this health alert as ONE warm, calm, natural English message (2-3 sentences). Keep ALL facts exactly: the detected time window, the metric and threshold, the peak value, the duration, and the note that readings sync about hourly so timing is approximate. Do NOT diagnose and do NOT add new numbers. Plain text only.
+
+Facts: {facts}
+
+Draft: {deterministic}

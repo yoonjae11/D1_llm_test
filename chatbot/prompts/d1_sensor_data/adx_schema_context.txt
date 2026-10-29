@@ -1,0 +1,196 @@
+Sensor data of user {user_id}: the schema, what can be recorded in it, and
+therefore how to query it.
+
+PART 1 - THE SCHEMA
+
+All evidence comes from six read-only functions. Each takes three positional
+arguments: (TargetUserId:string, StartLocal:datetime, EndLocal:datetime) and
+returns rows of that user whose local event time overlaps [StartLocal, EndLocal).
+All timestamps are already local wall-clock times. No other table or function is
+available, and the query must not use management commands, externaldata, search
+or union *.
+
+1) SensorHealthSamples - every recorded health record, one row per record.
+   Columns: UserId, DateFrom, DateTo, Type, Unit, Value, ValueNumber, ValueType,
+   Uuid, IngestionTime, RecordingMethod, SourceDeviceId, SourceId, SourceName,
+   SourcePlatform.
+   [DateFrom, DateTo) is the time the record covers (the two are equal for a
+   reading taken at one moment). Type names the measurement, Unit its unit,
+   ValueNumber its number in that unit (for MINUTE, the minutes themselves;
+   zero is a real value) and Value the original value
+   (a JSON object for WORKOUT records). SourceName and SourcePlatform name the
+   app or device that produced the record. IngestionTime is when the record
+   arrived; it only identifies the newest copy and is never an event date.
+
+2) SensorWorkoutSessions - one row per workout session, read from the WORKOUT
+   records. Columns: UserId, WorkoutId, StartLocal, EndLocal, ActivityName,
+   ActivityCode, DurationMin (minutes), AverageHeartRateBpm (the session's
+   average heart rate), ElevationGain, Distance + DistanceUnit (normally
+   METER), CaloriesKcal (kilocalories), Steps, ActiveZoneMinutes,
+   Speed + SpeedUnit, SourcePlatform, SourceName, IngestionTime.
+   ActivityName is free text such as "Indoor Rowing"; ActivityCode is its
+   upper-case spelling. StartLocal/EndLocal are also column names here, so
+   write the function bounds as datetime(...) literals rather than
+   let-variables with those names.
+
+3) SensorSleepNights - sleep sessions assembled from sleep-stage interval
+   records. Columns: UserId, SleepDay (wake date), OnsetLocal, WakeLocal,
+   TimeInBedMin, AsleepMin, DeepMin, RemMin, LightMin, AwakeMin, DeepPct,
+   RemPct, LightPct, AwakePct, SleepEfficiencyPct, HasStageBreakdown,
+   IsMainSleep, SessionRankInDay, StageRowCount, SourceName, SourcePlatform.
+   One row per sleep session; a night can also contain naps and IsMainSleep
+   marks the main one. It is derived: its stage fields are filled only when
+   the producer recorded stage intervals, and they are rounded. When flat
+   SLEEP_* records exist for a measurement, those records are the recorded
+   (unrounded) evidence; this function supplies what they lack, such as
+   IsMainSleep.
+
+4) SensorActivityDaily - daily totals of accumulating activity amounts after
+   splitting records across dates and resolving overlapping sources.
+   Columns: UserId, LocalDate, Type, Unit, ValueSumExact,
+   ContributingIntervalCount, DayBoundaryCrossingIntervalCount,
+   SourcePlatform, SourceName. One row per date and source, so it cannot
+   answer part of a day. It can be empty for some producers; the observed
+   resource status says whether it has rows.
+
+5) SensorActivityHourly - the same totals per hour (adds HourStartLocal),
+   built from the same records as the daily rollup: it has rows for a Type
+   whenever SensorActivityDaily does.
+
+6) SensorActivityInterval - deduplicated accumulating-amount records
+   (DateFrom, DateTo, Type, Unit, ValueNumber), for exact record times.
+
+PART 2 - WHAT CAN BE RECORDED
+
+Which Types exist depends on the user's phone, wearables, granted permissions
+and producer app; the observed metadata lists this user's Type/Unit pairs and
+how their records look. Every Type is one of these kinds:
+
+a) Accumulating amounts: STEPS, DISTANCE_DELTA, DISTANCE_WALKING_RUNNING,
+   FLIGHTS_CLIMBED, ACTIVE_ENERGY_BURNED, BASAL_ENERGY_BURNED,
+   TOTAL_CALORIES_BURNED, EXERCISE_TIME, APPLE_MOVE_TIME, APPLE_STAND_TIME,
+   ACTIVE_ZONE_MINUTES (and its FATBURN_/CARDIO_/PEAK_ variants).
+   A record holds the amount accrued during [DateFrom, DateTo). One producer
+   sends one record per day holding the daily total; another sends many short
+   records of varying length (for example 10:35-10:39) that add up to the day.
+   A phone and a watch can both record the same movement in overlapping
+   records from different sources; adding the flat records of several
+   sources counts that movement more than once.
+
+b) Readings: HEART_RATE, RESTING_HEART_RATE, HEART_RATE_VARIABILITY_RMSSD,
+   HEART_RATE_VARIABILITY_SDNN, RESPIRATORY_RATE, BLOOD_OXYGEN, SPEED,
+   WALKING_SPEED, WEIGHT, BODY_FAT_PERCENTAGE, BODY_TEMPERATURE, BLOOD_GLUCOSE.
+   A record is the value at a moment, or a representative value for a day
+   (often one RESTING_HEART_RATE or HRV value per day). A reading is not an
+   amount that accumulates, so a period is usually summarized by the mean,
+   minimum, maximum or a selected reading; when the question asks for a
+   total of readings, compute the total it asks for.
+
+c) Sleep (minutes unless the Type is a percentage):
+   - SLEEP_SESSION: the recorded duration of a sleep session (ValueNumber),
+     from bedtime to wake-up. This is the system's sleep-duration measure (total_sleep_time);
+     it is not reduced by awake time unless the question asks for time asleep
+     excluding awake.
+   - SLEEP_ASLEEP: explicitly recorded asleep time; SLEEP_IN_BED: time in bed.
+   - SLEEP_DEEP, SLEEP_REM, SLEEP_LIGHT, SLEEP_AWAKE (and SLEEP_AWAKE_IN_BED,
+     SLEEP_OUT_OF_BED, SLEEP_UNKNOWN when a producer separates them): time in
+     each state.
+   - SLEEP_DEEP_PERCENTAGE, SLEEP_REM_PERCENTAGE, SLEEP_LIGHT_PERCENTAGE,
+     SLEEP_AWAKE_PERCENTAGE: the recorded share of the session in that stage
+     (percent); use them as recorded rather than recomputing a ratio.
+   A producer sends either one record per session holding each stage total,
+   or many stage interval records inside the session (they can share the
+   session's Uuid while starting at different times). A sleep session can be
+   re-sent while it grows, with the same Uuid and start but a later DateTo.
+
+d) Workouts: WORKOUT records hold one session as a JSON object in Value
+   (ValueNumber null, Unit NO_UNIT). SensorWorkoutSessions already exposes its
+   fields: workoutActivityType -> ActivityName, durationMinutes -> DurationMin,
+   averageHeartRate -> AverageHeartRateBpm, totalDistance + totalDistanceUnit
+   -> Distance, totalEnergyBurned + totalEnergyBurnedUnit -> CaloriesKcal,
+   totalSteps -> Steps, activeZoneMinutes -> ActiveZoneMinutes,
+   elevationGain -> ElevationGain, speed -> Speed. Only when the observed
+   workout_payload metadata shows other keys and those columns are empty, read
+   WORKOUT rows of SensorHealthSamples with parse_json(tostring(Value)).<key>
+   (a child holding an encoded JSON string needs one more
+   parse_json(tostring(...))).
+
+e) Profile values: HEIGHT, GENDER, BIRTH_DATE, BLOOD_TYPE change rarely; the
+   latest record is the current value.
+
+f) Events and logs: HIGH_HEART_RATE_EVENT, LOW_HEART_RATE_EVENT,
+   IRREGULAR_HEART_RATE_EVENT, MINDFULNESS, WATER, NUTRITION,
+   MENSTRUATION_FLOW: one record per event or entry; count the records or add
+   their amounts.
+
+Reading the observed metadata for a Type: compare RowCount with the number of
+days or nights in the window - about one per day or night means one complete
+value each; many per day or night means pieces to add up. For minute amounts,
+IntervalDurationMatchRows counts records whose amount equals their own
+DateTo-DateFrom span (each record covers exactly what it measures, such as a
+whole-session record or a stage interval) and IntervalDurationMismatchRows
+counts amounts that differ from their span (such as a stage total stored on
+the session window). RepeatedWindowRows, DistinctRecordSameWindowRows and
+MultiSourceSameWindowRows reveal re-sent copies and overlapping sources.
+
+PART 3 - THEREFORE, HOW TO QUERY IT
+
+Where to read each kind
+- Workout measurements (anything measured per session): SensorWorkoutSessions.
+- Accumulating amounts: SensorActivityDaily per day, or SensorActivityHourly
+  for hours and clock windows, when the observed resource status shows the
+  rollup has rows for that Type; both already resolve overlapping sources and
+  split records that cross a date or hour. Otherwise add up the deduplicated
+  SensorHealthSamples records of that Type.
+- Sleep amounts, stages and percentages: the SLEEP_* records of
+  SensorHealthSamples when they exist; they are what was recorded. Adding the
+  deduplicated amounts per night gives the right total for both the
+  one-record and the many-interval shape. SensorSleepNights supplies what the
+  flat records lack, such as the main-sleep flag.
+- Readings, profile values, events and logs: their SensorHealthSamples
+  records.
+
+Re-sent copies
+- A record is identified by its Type, Uuid and start time. Keep the newest
+  copy per identity before calculating:
+  summarize arg_max(IngestionTime, *) by Type, Uuid, DateFrom.
+- A re-sent workout keeps its WorkoutId:
+  summarize arg_max(IngestionTime, *) by WorkoutId.
+- Overlapping records from different sources are not copies and are not
+  removed by this; the activity rollups resolve them.
+- SensorSleepNights and the activity rollups are already deduplicated and
+  have no IngestionTime column.
+
+Dates
+- Non-sleep records and workouts belong to the civil date startofday(DateFrom)
+  or startofday(StartLocal).
+- Sleep belongs to a night. With sleep_date_basis night_day the night label is
+  startofday(DateFrom - 12h) (or startofday(OnsetLocal - 12h)): a sleep starting
+  at 23:10 on March 3 and one starting at 01:30 on March 4 both belong to the
+  night of March 3, so "today's sleep" is the night that starts today.
+  wake_day uses startofday(DateTo)/WakeLocal; start_day uses
+  startofday(DateFrom)/OnsetLocal. Apply the same label to sleep conditions and
+  outputs; other streams keep their civil date.
+
+Records that cross a boundary
+- Accumulating amounts add up only across non-overlapping records. A record
+  that starts before and ends after a requested boundary (midnight, an hour, a
+  clock window) is fully inside neither side. SensorActivityDaily and
+  SensorActivityHourly already split such records. When working from the flat
+  or interval records instead, a record completely inside the window keeps its
+  full amount; a crossing record may be allocated by its overlap share,
+  ValueNumber * overlap duration / (DateTo - DateFrom), using its full original
+  duration even across midnight. That share assumes uniform accrual inside the
+  record, so it is an estimate: label it (IsEstimate = true, AllocationMethod =
+  "overlap_share"), and do not use it when the question asks for exact values.
+- Readings, percentages, running totals and workout sessions are not divided
+  this way.
+
+Units
+- Minutes are minutes; a threshold in hours is multiplied by 60.
+- Distance is in meters unless DistanceUnit says otherwise.
+- A declared producer unit (producer_measurement_contracts in the observed
+  metadata, or a note appended to the question) defines the stored unit of a
+  field such as workout speed; it takes precedence over the SpeedUnit column,
+  which can be a fixed adapter label. Convert the question's threshold into the
+  stored unit; do not rescale stored values.

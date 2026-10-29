@@ -1,0 +1,25 @@
+{
+  "document_id": "nhs_chest_pain",
+  "source_id": "NHS_UK",
+  "organisation": "NHS",
+  "title": "Chest pain",
+  "source_url": "https://www.nhs.uk/symptoms/chest-pain/",
+  "retrieved_at": "2026-09-11",
+  "version": "snapshot-2026-09-11",
+  "licence": "NHS website terms / Open Government Licence; paraphrased snapshot",
+  "licence_review_status": "APPROVED",
+  "status": "ACTIVE",
+  "allowed_for_research_rag": true,
+  "content_hash": "7a59de154248e9a6c8ef556cbcc4749fa01842f5f9b8ab1301fd9d5f3854e600",
+  "content_hash_sha256": "7a59de154248e9a6c8ef556cbcc4749fa01842f5f9b8ab1301fd9d5f3854e600",
+  "chunks": [
+    {
+      "chunk_id": "emergency_signs",
+      "section_title": "When to seek help",
+      "content_hash_sha256": "7a59de154248e9a6c8ef556cbcc4749fa01842f5f9b8ab1301fd9d5f3854e600",
+      "char_start": 0,
+      "char_end": 343,
+      "text": "Call 999 for sudden chest pain or discomfort that does not go away, pain spreading to an arm, neck, jaw, stomach or back, or chest pain with sweating, nausea, light-headedness or shortness of breath. These signs may need immediate hospital treatment. Seek medical advice for chest pain that recurs or resolves quickly but still causes concern."
+    }
+  ]
+}

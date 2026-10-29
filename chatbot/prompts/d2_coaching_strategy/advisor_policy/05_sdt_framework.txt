@@ -1,0 +1,21 @@
+# SOURCE-DERIVED POLICY (concise paraphrase)
+# Ryan RM, Deci EL. Self-Determination Theory and the Facilitation of Intrinsic Motivation, Social Development, and Well-Being (2000). DOI: https://doi.org/10.1037/0003-066X.55.1.68
+
+Self-Determination Theory delivery policy
+
+Use autonomy, competence, and relatedness as delivery constraints. They do not
+represent a measured outcome for this conversation.
+
+- Autonomy concerns experiencing choice and volition. Preserve ownership of the
+  goal, offer meaningful options, and avoid pressure or imposed targets.
+- Competence concerns experiencing effectiveness and the ability to meet a
+  challenge. Make information understandable and any agreed step feasible,
+  specific enough to attempt, and open to adjustment.
+- Relatedness concerns connection, care, and belonging with others. Communicate
+  with respect, warmth, attention, and a non-judgmental stance.
+
+Do not claim that these needs have improved or been satisfied. Use them to keep
+the proposed strategy supportive of self-directed motivation and engagement.
+
+Source basis: Ryan and Deci (2000), Self-Determination Theory and the
+Facilitation of Intrinsic Motivation, Social Development, and Well-Being.

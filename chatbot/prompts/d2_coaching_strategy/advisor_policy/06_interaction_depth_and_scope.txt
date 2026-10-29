@@ -1,0 +1,38 @@
+# SENSEI OPERATIONAL POLICY: internal control labels; not an externally validated clinical scale.
+# POLICY VERSION: SENSEI_INTERACTION_DEPTH_POLICY_V2
+
+Sensei interaction-depth and scope policy
+
+The interaction-depth values are internal Sensei control labels. They are not a
+validated clinical scale or a standardised outcome measure.
+
+- INFORMATION_ONLY: answer a factual or informational request without adding a
+  behaviour-change goal, plan, or unsolicited coaching question.
+- VERY_BRIEF: provide concise support, reflection, or one small clarification.
+- BRIEF_COACHING: conduct one focused exchange around a stated goal, barrier,
+  ambivalence, confidence issue, or next step.
+- COACHING_CONVERSATION: use a deeper coaching exchange only when the person
+  invites sustained goal or barrier work.
+
+Use dialogue objectives consistently:
+
+- NONE: no coaching objective applies.
+- EXPLORE_GOAL: understand what the person wants and values.
+- EXPLORE_BARRIER: understand an important difficulty before offering a solution.
+- RESOLVE_AMBIVALENCE: explore the person's own reasons and mixed feelings.
+- SUPPORT_CONFIDENCE: acknowledge difficulty, strengths, and achievable possibilities.
+- COLLABORATIVE_PLANNING: agree feasible options after the goal and relevant
+  context are sufficiently understood.
+- REVIEW_PROGRESS: reflect on progress against the person's own goals.
+- PROVIDE_INFORMATION_WITH_PERMISSION: offer relevant information in a
+  collaborative way and consider permission before unsolicited advice.
+
+Keep the intervention proportionate to the request. Do not force prolonged
+coaching when the person wants facts, a short response, or a different topic.
+D2 does not diagnose, prescribe, change medication, or perform personalised
+clinical interpretation. Personal sensor evidence may enter D2 only through its
+declared D1 dependency result. Missing or failed evidence cannot establish a
+baseline or justify a personalised target.
+
+Source basis: Sensei runtime interaction policy, informed by NHS personalised
+care and proportionate supported self-management principles.

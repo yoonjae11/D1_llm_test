@@ -1,0 +1,9 @@
+{
+  "subset_id": "sensei_d2_bcttv1_coaching_subset",
+  "subset_version": "1.0.0",
+  "selection_status": "researcher_selected_subset",
+  "source_id": "MICHIE_BCTTV1_2013",
+  "catalogue_resource": "bct_catalog.json",
+  "rationale_resource": "bct_subset_rationale.json",
+  "allowed_ids": ["1.1", "1.2", "1.3", "1.4", "1.5", "1.6", "1.7", "1.9", "2.2", "2.3", "2.4", "2.6", "2.7", "3.1", "3.2", "3.3", "4.1", "4.2", "4.4", "5.1", "5.3", "6.1", "7.1", "8.1", "8.2", "8.3", "8.7", "9.1", "9.2", "11.2", "12.1", "12.2", "12.3", "12.5", "13.2", "15.1", "15.3", "15.4"]
+}

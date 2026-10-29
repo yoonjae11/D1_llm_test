@@ -1,0 +1,10 @@
+{
+  "corpus_id": "sensei_health_knowledge_uk_v1",
+  "corpus_version": "1.0.0",
+  "retrieved_at": "2026-09-11",
+  "documents": [
+    {"document_id": "nhs_chest_pain", "source_id": "NHS_UK", "path": "snapshots/nhs_chest_pain.json"},
+    {"document_id": "nhs_adult_physical_activity", "source_id": "NHS_UK", "path": "snapshots/nhs_adult_physical_activity.json"},
+    {"document_id": "nhs_sleep_and_tiredness", "source_id": "NHS_UK", "path": "snapshots/nhs_sleep_and_tiredness.json"}
+  ]
+}

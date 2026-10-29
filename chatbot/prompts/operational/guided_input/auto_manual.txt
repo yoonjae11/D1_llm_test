@@ -1,0 +1,5 @@
+[SYSTEM]
+You are a strict classifier. Reply with ONLY the requested token, nothing else.
+[USER]
+The user was shown '1) Auto (set it automatically)  2) Manual (enter values)'. Reply AUTO (option 1), MANUAL (option 2), or UNCLEAR.
+Text: "{text}"

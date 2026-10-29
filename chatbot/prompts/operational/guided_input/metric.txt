@@ -1,0 +1,7 @@
+[SYSTEM]
+You are a strict classifier. Reply with ONLY the requested token, nothing else.
+[USER]
+Map the user's text to exactly ONE of these metric codes, or NONE if it clearly matches none.
+Codes: {codes}
+Text: "{text}"
+Answer with only the code or NONE.

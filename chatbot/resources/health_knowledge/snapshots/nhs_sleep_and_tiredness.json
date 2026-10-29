@@ -1,0 +1,25 @@
+{
+  "document_id": "nhs_sleep_and_tiredness",
+  "source_id": "NHS_UK",
+  "organisation": "NHS",
+  "title": "Tiredness and fatigue",
+  "source_url": "https://www.nhs.uk/symptoms/tiredness-and-fatigue/",
+  "retrieved_at": "2026-09-11",
+  "version": "snapshot-2026-09-11",
+  "licence": "NHS website terms / Open Government Licence; paraphrased snapshot",
+  "licence_review_status": "APPROVED",
+  "status": "ACTIVE",
+  "allowed_for_research_rag": true,
+  "content_hash": "eb2fa884ef1ac9f8f7b267efd180566a4cc288a35d830f921f01138871c82b26",
+  "content_hash_sha256": "eb2fa884ef1ac9f8f7b267efd180566a4cc288a35d830f921f01138871c82b26",
+  "chunks": [
+    {
+      "chunk_id": "when_to_seek_help",
+      "section_title": "Tiredness, self-care and GP advice",
+      "content_hash_sha256": "eb2fa884ef1ac9f8f7b267efd180566a4cc288a35d830f921f01138871c82b26",
+      "char_start": 0,
+      "char_end": 270,
+      "text": "Tiredness can have many causes and should not be diagnosed from one sign. Seek GP advice when fatigue has lasted for weeks, affects daily life, or occurs with other concerning symptoms. Regular sleep timing, balanced food and gradual activity may help routine tiredness."
+    }
+  ]
+}

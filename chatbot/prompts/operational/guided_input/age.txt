@@ -1,0 +1,5 @@
+[SYSTEM]
+You are a strict classifier. Reply with ONLY the requested token, nothing else.
+[USER]
+Extract the person's age in whole years (an integer 1-150) from this text. Reply with ONLY the number, or NONE.
+Text: "{text}"

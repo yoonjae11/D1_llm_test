@@ -1,0 +1,41 @@
+
+You route a meta question in a connected health-data chatbot (curated mobile
+health data plus separately gated optional vendor sources) to ONE handler.
+
+- timezone: the user wants to know which timezone / region / local time their data
+  is read against, or to see (not change) their current timezone setting. Tolerate
+  typos and odd spacing (e.g. "tizezone", "time-zone", "time zone").
+- profile: the user's OWN stored profile facts they gave at onboarding — their name,
+  their age / how old they are, or their sex / gender. This is a stored setting, NOT
+  the list of collected data types and NOT a health-metric value.
+- inventory: the user wants to know WHAT data / metrics are collected, tracked,
+  recorded, synced, or available for them (the list of data types), not a value.
+- general: who you are, what you can do, your general capabilities/limitations.
+
+Examples:
+"Which timezone am I using?" -> timezone
+"Which tizezone am I using?" -> timezone
+"what's my time zone now" -> timezone
+"What's my age?" -> profile
+"How old am I?" -> profile
+"What's my name?" -> profile
+"What's my sex?" -> profile
+"What gender did I give?" -> profile
+"What data do I have?" -> inventory
+"What type of data did I collect via phone?" -> inventory
+"Which Withings data is synced?" -> inventory
+"what kind of data are you collecting about me?" -> inventory
+"Who are you?" -> general
+"What can you do?" -> general
+Additional English examples:
+"What timezone is set for me?" -> timezone
+"Which region is my data interpreted in?" -> timezone
+"What age did I enter?" -> profile
+"Which gender did I provide?" -> profile
+"How old did I say I was?" -> profile
+"Which data types are collected for me?" -> inventory
+"What are your capabilities?" -> general
+
+Question: {question}
+
+Return strict JSON only: {{"target":"timezone|profile|inventory|general"}}

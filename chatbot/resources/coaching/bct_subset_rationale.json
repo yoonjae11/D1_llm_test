@@ -1,0 +1,63 @@
+{
+  "rationale_version": "1.0.0",
+  "subset_id": "sensei_d2_bcttv1_coaching_subset",
+  "source_id": "MICHIE_BCTTV1_2013",
+  "selection_owner": "Sensei research and product policy",
+  "scope_statement": "This is an explicit 38-technique Sensei runtime subset, not the complete 93-technique BCTTv1 taxonomy.",
+  "inclusion_criteria": [
+    "Can be delivered conversationally by a non-clinical health and wellbeing coach",
+    "Supports goal clarification, planning, feedback, self-monitoring, social support, or confidence without diagnosing or prescribing",
+    "Can be represented with an observable strategy and evidence-grounded rationale"
+  ],
+  "exclusion_criteria": [
+    "Requires clinical diagnosis, medication management, coercion, material incentives, or specialist delivery",
+    "Cannot be safely or faithfully delivered in the current chat interaction",
+    "Duplicates an included technique for the bounded initial runtime use cases"
+  ],
+  "allowed_ids": ["1.1", "1.2", "1.3", "1.4", "1.5", "1.6", "1.7", "1.9", "2.2", "2.3", "2.4", "2.6", "2.7", "3.1", "3.2", "3.3", "4.1", "4.2", "4.4", "5.1", "5.3", "6.1", "7.1", "8.1", "8.2", "8.3", "8.7", "9.1", "9.2", "11.2", "12.1", "12.2", "12.3", "12.5", "13.2", "15.1", "15.3", "15.4"],
+  "technique_rationales": [
+    {"bct_id":"1.1","why_included":"Supports a person-chosen behavioural goal.","health_coaching_use_cases":["activity or sleep-routine goal"],"source_id":"MICHIE_BCTTV1_2013"},
+    {"bct_id":"1.2","why_included":"Supports collaborative analysis of barriers and options.","health_coaching_use_cases":["barrier exploration"],"source_id":"MICHIE_BCTTV1_2013"},
+    {"bct_id":"1.3","why_included":"Supports a person-chosen outcome without treating it as guaranteed.","health_coaching_use_cases":["wellbeing outcome goal"],"source_id":"MICHIE_BCTTV1_2013"},
+    {"bct_id":"1.4","why_included":"Turns an agreed goal into a specific, voluntary next step.","health_coaching_use_cases":["when, where and how planning"],"source_id":"MICHIE_BCTTV1_2013"},
+    {"bct_id":"1.5","why_included":"Enables collaborative review and adjustment of behaviour goals.","health_coaching_use_cases":["progress review"],"source_id":"MICHIE_BCTTV1_2013"},
+    {"bct_id":"1.6","why_included":"Can compare grounded current behaviour with a chosen goal without shame.","health_coaching_use_cases":["sensor-grounded review"],"source_id":"MICHIE_BCTTV1_2013"},
+    {"bct_id":"1.7","why_included":"Enables review of an outcome goal while preserving uncertainty.","health_coaching_use_cases":["outcome progress review"],"source_id":"MICHIE_BCTTV1_2013"},
+    {"bct_id":"1.9","why_included":"Supports an explicitly chosen commitment without coercion.","health_coaching_use_cases":["voluntary next-step commitment"],"source_id":"MICHIE_BCTTV1_2013"},
+    {"bct_id":"2.2","why_included":"Allows factual feedback on observed behaviour.","health_coaching_use_cases":["sensor-grounded behaviour feedback"],"source_id":"MICHIE_BCTTV1_2013"},
+    {"bct_id":"2.3","why_included":"Supports user-controlled tracking of behaviour.","health_coaching_use_cases":["walking or routine log"],"source_id":"MICHIE_BCTTV1_2013"},
+    {"bct_id":"2.4","why_included":"Supports user-controlled tracking of relevant outcomes.","health_coaching_use_cases":["sleep or perceived-energy log"],"source_id":"MICHIE_BCTTV1_2013"},
+    {"bct_id":"2.6","why_included":"Allows feedback from an available measurement device without diagnostic inference.","health_coaching_use_cases":["wearable measurement feedback"],"source_id":"MICHIE_BCTTV1_2013"},
+    {"bct_id":"2.7","why_included":"Allows grounded feedback on measured or self-reported outcomes.","health_coaching_use_cases":["outcome review"],"source_id":"MICHIE_BCTTV1_2013"},
+    {"bct_id":"3.1","why_included":"Supports exploration of helpful social support.","health_coaching_use_cases":["general support planning"],"source_id":"MICHIE_BCTTV1_2013"},
+    {"bct_id":"3.2","why_included":"Supports practical assistance chosen by the user.","health_coaching_use_cases":["transport or scheduling help"],"source_id":"MICHIE_BCTTV1_2013"},
+    {"bct_id":"3.3","why_included":"Supports emotional encouragement without therapy claims.","health_coaching_use_cases":["confidence and setback support"],"source_id":"MICHIE_BCTTV1_2013"},
+    {"bct_id":"4.1","why_included":"Can provide requested, bounded how-to information.","health_coaching_use_cases":["safe routine instructions"],"source_id":"MICHIE_BCTTV1_2013"},
+    {"bct_id":"4.2","why_included":"Supports noticing context that precedes a behaviour.","health_coaching_use_cases":["barrier and cue exploration"],"source_id":"MICHIE_BCTTV1_2013"},
+    {"bct_id":"4.4","why_included":"Supports a small voluntary test rather than a rigid prescription.","health_coaching_use_cases":["trial of an achievable option"],"source_id":"MICHIE_BCTTV1_2013"},
+    {"bct_id":"5.1","why_included":"Allows approved-source information about health consequences.","health_coaching_use_cases":["grounded health education"],"source_id":"MICHIE_BCTTV1_2013"},
+    {"bct_id":"5.3","why_included":"Supports discussion of social or environmental consequences.","health_coaching_use_cases":["context-aware choice exploration"],"source_id":"MICHIE_BCTTV1_2013"},
+    {"bct_id":"6.1","why_included":"Can illustrate a behaviour when a safe, appropriate example exists.","health_coaching_use_cases":["skill demonstration"],"source_id":"MICHIE_BCTTV1_2013"},
+    {"bct_id":"7.1","why_included":"Supports user-chosen reminders and cues.","health_coaching_use_cases":["routine reminder"],"source_id":"MICHIE_BCTTV1_2013"},
+    {"bct_id":"8.1","why_included":"Supports practice of a non-clinical behavioural skill.","health_coaching_use_cases":["routine rehearsal"],"source_id":"MICHIE_BCTTV1_2013"},
+    {"bct_id":"8.2","why_included":"Supports replacing an unwanted routine with a chosen alternative.","health_coaching_use_cases":["routine substitution"],"source_id":"MICHIE_BCTTV1_2013"},
+    {"bct_id":"8.3","why_included":"Supports consistent repetition in a stable context.","health_coaching_use_cases":["habit formation"],"source_id":"MICHIE_BCTTV1_2013"},
+    {"bct_id":"8.7","why_included":"Supports gradual, achievable progression.","health_coaching_use_cases":["graded activity or routine steps"],"source_id":"MICHIE_BCTTV1_2013"},
+    {"bct_id":"9.1","why_included":"Allows explicit connection to an approved credible source.","health_coaching_use_cases":["evidence-grounded information"],"source_id":"MICHIE_BCTTV1_2013"},
+    {"bct_id":"9.2","why_included":"Supports non-directive exploration of advantages and disadvantages.","health_coaching_use_cases":["ambivalence exploration"],"source_id":"MICHIE_BCTTV1_2013"},
+    {"bct_id":"11.2","why_included":"Supports non-clinical strategies for reducing distress around a chosen behaviour.","health_coaching_use_cases":["setback coping"],"source_id":"MICHIE_BCTTV1_2013"},
+    {"bct_id":"12.1","why_included":"Supports user-controlled changes to the physical setting.","health_coaching_use_cases":["environment design"],"source_id":"MICHIE_BCTTV1_2013"},
+    {"bct_id":"12.2","why_included":"Supports user-controlled changes to the social setting.","health_coaching_use_cases":["social environment planning"],"source_id":"MICHIE_BCTTV1_2013"},
+    {"bct_id":"12.3","why_included":"Supports reducing exposure to user-identified unhelpful cues.","health_coaching_use_cases":["cue management"],"source_id":"MICHIE_BCTTV1_2013"},
+    {"bct_id":"12.5","why_included":"Supports adding a user-chosen object that makes action easier.","health_coaching_use_cases":["equipment or reminder placement"],"source_id":"MICHIE_BCTTV1_2013"},
+    {"bct_id":"13.2","why_included":"Supports a respectful alternative interpretation without disputing experience.","health_coaching_use_cases":["setback reframing"],"source_id":"MICHIE_BCTTV1_2013"},
+    {"bct_id":"15.1","why_included":"Supports grounded encouragement about capability without false certainty.","health_coaching_use_cases":["confidence support"],"source_id":"MICHIE_BCTTV1_2013"},
+    {"bct_id":"15.3","why_included":"Can draw on the user's evidenced prior success.","health_coaching_use_cases":["confidence after setbacks"],"source_id":"MICHIE_BCTTV1_2013"},
+    {"bct_id":"15.4","why_included":"Supports a user-chosen constructive self-statement.","health_coaching_use_cases":["confidence and coping"],"source_id":"MICHIE_BCTTV1_2013"}
+  ],
+  "excluded_categories": [
+    {"reason":"Requires clinical or specialist delivery outside Sensei's role.","examples":"diagnosis-linked, medication, or specialist procedures"},
+    {"reason":"Uses coercion, material incentives, punishment, or unwanted social pressure.","examples":"non-autonomy-supportive techniques"},
+    {"reason":"Cannot be delivered observably and safely in the current chat scope.","examples":"environmental interventions Sensei cannot perform"}
+  ]
+}

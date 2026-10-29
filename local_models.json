@@ -1,0 +1,60 @@
+{
+  "endpoint": "https://your-resource.services.ai.azure.com",
+  "api_key_env": "AZURE_OPENAI_API_KEY",
+  "models": {
+    "gpt-5": {
+      "api": "responses",
+      "reasoning_effort": "low",
+      "max_output_tokens": 65536
+    },
+    "gpt-6-luna": {
+      "api": "responses",
+      "max_output_tokens": 65536
+    },
+    "gpt-6-sol": {
+      "api": "responses",
+      "max_output_tokens": 65536
+    },
+    "gpt-6-1-sol": {
+      "api": "responses",
+      "max_output_tokens": 65536
+    },
+    "claude-haiku-5-5": {
+      "api": "anthropic",
+      "max_output_tokens": 64000
+    },
+    "claude-sonnet-5-5": {
+      "api": "anthropic",
+      "max_output_tokens": 64000
+    },
+    "claude-opus-5-5": {
+      "api": "anthropic",
+      "max_output_tokens": 64000
+    },
+    "deepseek-v4-pro": {
+      "api": "chat",
+      "max_output_tokens": 65536
+    },
+    "llama-4-maverick": {
+      "api": "chat",
+      "repetition_retry_frequency_penalty": 0.3,
+      "max_output_tokens": 32768
+    },
+    "grok-4-1-fast-reasoning": {
+      "api": "chat",
+      "max_output_tokens": 65536
+    },
+    "grok-4-1-fast-non-reasoning": {
+      "api": "chat",
+      "max_output_tokens": 65536
+    },
+    "deepseek-v4-flash": {
+      "api": "chat",
+      "max_output_tokens": 65536
+    },
+    "kimi-k2-6": {
+      "api": "chat",
+      "max_output_tokens": 65536
+    }
+  }
+}

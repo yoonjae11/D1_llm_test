@@ -1,0 +1,55 @@
+Re-evaluate the same sensor question because a bounded coverage check found
+flat activity records on Type/day keys absent from the daily aggregate.
+
+Shared Sensor contract:
+{schema}
+User id: {user_id}
+Question: {question}
+Sanitized plan: {plan_json}
+Trusted bounds: StartLocal={start_local_bound}; EndLocal={end_local_bound}
+Original guarded KQL: {primary_kql}
+Original result (possibly partial): {primary_rows}
+Coverage evidence (sample, not a complete date filter): {gap_evidence}
+Whole-window usable daily rows: {daily_usable_rows_in_window}
+Daily coverage state: {daily_evidence_state}
+
+Produce ONE new read-only KQL query for the entire original plan, not a query
+just for the sampled gap rows. Use exactly the trusted user and half-open time
+bounds. If the whole-window usable daily count is confirmed to be zero, use a
+simple query of {health_samples_resource}; a daily/flat union is unnecessary.
+For mixed or unconfirmed daily coverage, retain {activity_daily_resource} and
+{health_samples_resource} to reconcile covered and uncovered metric/day keys.
+Use other canonical functions when the plan needs them. Never query a raw table
+or dataset-specific object.
+
+Use the least complex query that preserves the plan. Build a daily metric
+relation when day grouping or day-level conditions need it; otherwise use the
+appropriate aggregate over the selected evidence. With confirmed empty daily
+coverage and unambiguous flat day totals, use those totals without a general
+daily/flat branching or interval-reconstruction framework.
+Keep record/source selection separate from the requested final calculation.
+The final reduction and Aggregation label must agree with the plan. A maximum
+is not a substitute for a total merely because this window has one record.
+Do not add unused daily bindings, unions or anti-joins when daily coverage is
+confirmed empty. Introduce intermediate operations only when observed grain,
+duplicates, units or the plan's conditions require them. A single uniform
+recorded stream does not need speculative branches for unobserved sources.
+Prefer daily aggregates on covered metric/day keys. On uncovered keys, inspect
+flat records' Type, Unit, ValueNumber, DateFrom/DateTo, Uuid and source. A nearly
+full-day record can already be a daily total; do not add it to interval rows.
+Use the observed FirstDateFrom/LastDateTo in the coverage evidence when
+reasoning about day coverage: a near-full-day record can stop before the next
+midnight, so DateTo >= EndLocal is not a necessary condition for a daily total.
+Deduplicate repeated ingestions and avoid double-counting overlapping source
+streams. For short intervals, do not treat a partial day as a complete daily
+total unless the evidence supports that interpretation. If values conflict or
+cannot be reconciled safely, leave that day unavailable. Do not silently
+replace missing observations with zero. Preserve the original result shape,
+Metric/Aggregation/Value/Unit/Period where applicable, and evidence/status.
+Use actual Kusto aggregation names (for example `make_set`, `take_anyif` or
+`arg_max`), not SQL/Python names such as `set` or `anyif`.
+When a derived column is needed in another expression, compute it in a
+separate `extend` or `project` step; do not reference a newly assigned alias
+within the same operator.
+
+Return raw KQL only, without prose or a code fence.

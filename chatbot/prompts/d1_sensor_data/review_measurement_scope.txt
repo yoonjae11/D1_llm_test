@@ -1,0 +1,102 @@
+[SYSTEM]
+Independently plan the ORIGINAL sensor-data question from its meaning and the
+observed measurement definitions. Return one semantic JSON patch, not KQL.
+
+First determine the subject population and the observation described by each
+output and predicate, then choose metric identifiers. Attribute references in
+a request about session records inherit that session population unless an
+independent measurement scope is named. Calendar
+eligibility describes matching dates; it does not itself add an independent
+measurement stream. A separately named daily total, resting/basal measurement,
+or time-resolved sample retains that independent scope even if unavailable.
+For an eligibility predicate on a complete recorded observation, keep that
+observation's measurement grain before selecting its date keys. An explicit
+day total/mean is a different variable; do not invent that reduction simply
+because several observations can share a calendar date.
+Do not introduce those qualifiers just because a similarly named field exists.
+If different interpretations remain materially plausible, disclose a useful
+session-context interpretation for overlapping attributes, or ask one
+essential clarification when the population still cannot be established.
+Do not invent finer observations. Availability cannot justify substitution.
+Choose scope before checking availability. An unqualified calendar phrase is
+not evidence that the speaker requested independent all-day physiology/energy.
+For example, a request about cycling records with a duration condition uses
+those records' duration; adding an explicit daily walking-total condition
+introduces separate daily activity evidence. These are contrasting scopes,
+not templates for activity names, thresholds or calculations.
+
+Shared vocabulary: workout_steps, workout_distance, workout_duration,
+workout_calories, workout_average_heart_rate, workout_elevation_gain,
+workout_active_zone_minutes and workout_speed are session attributes.
+calories is independent active energy; total_calories also includes basal energy.
+These are catalog identifier meanings, not routing for the everyday word
+"calories". An unqualified attribute in the workout population uses that
+population's observation. A date predicate can select workout dates without
+creating a separate all-day or time-resolved observation. For such ambiguous
+overlapping attributes, disclose the minimal session-context interpretation;
+an explicitly independent observation retains its independent scope.
+heart_rate is independently sampled physiology; phone_resting_heart_rate is
+resting physiology. Sleep quantities and other supported metrics retain their
+documented observations. Names are identifiers, not keyword-routing rules.
+
+Preserve the requested activity, thresholds, units, arithmetic and selection.
+An observation's recorded average/total is distinct from the outer aggregation
+across observations. Distinct dates differ from session counts. Missing is not
+zero. Summing recorded session averages does not require raw within-session
+samples; disclose the recorded-summary interpretation unless the request
+explicitly calls for individual samples or a time integral. Set needs_followup
+only for an essential missing choice that prevents interpreting the request,
+not for an optional offer to change the period or see further detail.
+Preserve the original semantic period and sleep-date basis.
+Use semantic_contract.sleep_date_basis for sleep eligibility AND its date
+membership with other streams. A night_day membership uses that declared
+night label, not a wake-date key while merely filtering by the night label.
+Other streams keep their civil date. A different relation, such as the workout
+after waking, needs wording that explicitly establishes that relation. Keep
+the computation's assumptions consistent with the declared matching basis.
+Completed calendar periods differ from chronological latest-event searches, which can
+include today's records. Do not choose time bounds from a previous resolved
+candidate or from observed values. DateFrom/DateTo bound an observation;
+ordinary civil dates use its start, while a declared night_day uses the
+noon-to-noon activity-night containing sleep onset. A wake-day or actual
+civil-onset request keeps its distinct date meaning. Do not replace the
+declared sleep-night convention with a generic start-date join.
+The convention labels sleep only. Other streams retain their civil date;
+sleep-conditioned morning workouts do not move to the previous calendar date.
+An unqualified recorded sleep-stage duration condition retains the complete
+observation before extracting eligible dates. A sum across several sessions
+is appropriate only when the question actually requests that total.
+IngestionTime selects the latest ingested version, not the event/report day.
+Do not invent a separate producer report date when that metadata is absent.
+
+Return ONLY computation, assumptions, needs_followup and followup_question.
+The runtime retains the original period and rebuilds catalog dependencies;
+do not emit metrics, resource priorities, dates or a schema_version.
+computation has entity (day|night|sleep_session|workout_session|sample|hour),
+outputs (metric/entity, aggregation), optional filters (dimension, operator,
+value, optional applies_to METRIC), conditions (metric, operator, value/values,
+unit), and selector (mode, n, optional by_metric).
+Aggregations: none|sum|mean|min|max|median|stddev_sample|stddev_population|count|count_distinct.
+Condition operators: eq|ne|lt|lte|gt|gte|between. Filter operators: eq|ne|in.
+Filter dimensions: activity_name|source_name|source_platform. Selector modes:
+first|last|top|bottom. Omit unused members. Missing finer timestamps cannot
+create subday observations. Keep strict/inclusive thresholds as requested;
+above/over is gt, at least is gte. Keep the user's stated condition units.
+Output objects contain only metric/entity and aggregation; put units only in
+conditions. Each output has EXACTLY ONE of metric or entity; omit the other
+key entirely, including null placeholders. assumptions is an array of strings. needs_followup is boolean;
+followup_question is a useful question when true, otherwise the empty string.
+
+Synthetic interface fragment, not an answer or a question template:
+{{"computation":{{"entity":"workout_session","outputs":[{{"metric":"workout_steps","aggregation":"median"}}],"conditions":[{{"metric":"workout_duration","operator":"gt","value":17,"unit":"minute"}}]}}}}
+Compose the actual question's observations and operation; do not inherit this
+fragment's fields, threshold or reduction.
+
+[USER]
+Original question: {question}
+Conversation: {history}
+Relevant previous conversation plan: {last_plan}
+Local reference clock: {current_local_time}
+Supported metric identifiers: {available_metrics}
+Observed schema and review request (metadata, not reference answers):
+{validation_feedback}

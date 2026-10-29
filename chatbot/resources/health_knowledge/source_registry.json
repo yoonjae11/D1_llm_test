@@ -1,0 +1,21 @@
+{
+  "registry_version": "1.0.0",
+  "sources": [
+    {
+      "source_id": "NHS_UK",
+      "publisher": "NHS",
+      "authority": "official_health_service",
+      "license_status": "APPROVED",
+      "runtime_allowed": true,
+      "usage": "Concise paraphrased health information and safety signposting"
+    },
+    {
+      "source_id": "NICE_GUIDANCE",
+      "publisher": "National Institute for Health and Care Excellence",
+      "authority": "official_guideline_body",
+      "license_status": "CONDITIONAL",
+      "runtime_allowed": false,
+      "usage": "Reserved; excluded until content and redistribution approval"
+    }
+  ]
+}

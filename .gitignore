@@ -1,0 +1,139 @@
+# Local secrets and environment settings
+local.settings.json
+local.settings.*.json
+local.settings.memo
+!local.settings.sample.json
+.env
+.env.*
+!.env.example
+!.env.sample
+*.secret
+*.secrets
+.azure_app/
+account
+
+# Python local artifacts
+.venv/
+venv/
+env/
+ENV/
+.python_packages/
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyo
+*.pyd
+.Python
+
+# Azure Functions and Azurite local artifacts
+bin/
+obj/
+appsettings.json
+__blobstorage__/
+__queuestorage__/
+__azurite_db*__.json
+
+# Test, lint, and coverage artifacts
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+.coverage.*
+htmlcov/
+.tox/
+.nox/
+coverage.xml
+*.cover
+
+# Logs and temporary files
+*.log
+*.tmp
+*.temp
+*.bak
+*.swp
+*.swo
+
+# Editor and OS files
+.vscode/
+.idea/
+.claude/
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Node artifacts that are not part of this Function App runtime
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Local experiments that are not part of the Function App runtime
+furniture_chatbot/
+# Local test scripts, model metadata and unit adapters are versioned.
+# Credentials remain in the ignored private settings above, never in scripts.
+# Generated diagrams, reports, and local archives
+*.zip
+*.7z
+*.rar
+*.tar
+*.tar.gz
+*.tgz
+*.pdf
+*.docx
+*.pptx
+*.mmd
+build_graph_visualization.png
+langgraph_display.py
+
+# Markdown is not part of the Function runtime, but public folder documentation
+# belongs in Git. Azure deployment exclusion is handled separately by .funcignore.
+*.md
+!README.md
+!**/README.md
+!README_kr.md
+!**/README_kr.md
+!/Instruction_modification_guide.md
+!/ENVIRONMENT_VARIABLES_TO_SET_AFTER_DEPLOYMENT.md
+!/ARCHITECTURE.md
+!/docs/
+!/docs/**/*.md
+
+# Unused or experimental local folders
+prev_chatbot/
+simple_chatbot/
+webhook_light_function/
+mcp_basic/
+tmp_adx_agent_*/
+ADX_KQL/
+chatbot_backup_20260607_005603/
+test_proactive_integration.py
+verify_android_fixes.py
+verify_fixes.py
+verify_week_sleep.py
+telegram_conversation_log_adx_setup.kql
+
+# Test/evaluation source is part of the reproducible research hand-off.
+# Keep measured health data and generated results private instead of hiding code.
+evaluation-output/
+evaluation-results/
+*.private.json
+*.private.jsonl
+*.private.csv
+*.private.xlsx
+secrets.json
+credentials.json
+*token_cache*
+
+# Local backups, snapshots and agent state (not part of the code hand-off)
+*.bak*
+*.before-*
+_dist/
+_snapshots/
+.omc/
+# Evaluation inputs that contain measured health values stay local
+Objective_Query_*.xlsx
+# Versioned on purpose: evaluation guide, placeholder-only eval settings, offline token test
+!/README_PHIA_EVAL_KR.md
+!/local.settings.eval.sample.json
+!/tests/test_adx_token_cache.py

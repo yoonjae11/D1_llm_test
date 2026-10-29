@@ -1,0 +1,16 @@
+azure-functions
+azure-functions-durable
+azure-data-tables
+azure-identity
+azure-kusto-data
+azure-kusto-ingest
+azure-storage-queue
+requests
+langchain-core
+langchain-openai
+langgraph
+pydantic>=2,<3
+openai
+httpx
+certifi
+tzdata

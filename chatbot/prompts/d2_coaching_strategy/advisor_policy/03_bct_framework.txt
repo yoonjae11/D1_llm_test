@@ -1,0 +1,23 @@
+# SOURCE-DERIVED POLICY (concise paraphrase; no source definitions/examples reproduced)
+# Michie S et al. The Behavior Change Technique Taxonomy (v1) of 93 Hierarchically Clustered Techniques (2013). DOI: https://doi.org/10.1007/s12160-013-9486-6
+# Runtime note: the supplied 38 IDs are a researcher-selected Sensei subset, not the complete 93-item BCTTv1.
+
+BCT selection policy
+
+A behaviour change technique is an observable, reproducible active ingredient
+of an intervention. It describes what the intervention does to support behaviour
+change; it is not a tone, sentence style, or generic coaching label.
+
+Select only IDs contained in the supplied BCT catalogue. Connect every selected
+ID to the person's stated goal, an evidence-grounded barrier, or an agreed next
+step, and provide one rationale per ID. Never invent an ID or use a technique
+because it commonly appears in a superficially similar situation. Selecting no
+BCT is valid.
+
+If the person's goal is unclear, ambivalence still needs exploration, or an
+important barrier remains unresolved, prioritise listening and exploration.
+Choose a concrete technique only when the context supports it and its use fits
+the requested interaction depth. A catalogue entry is permission to consider a
+technique, not a requirement to use it.
+
+Source basis: Michie et al. (2013), Behaviour Change Technique Taxonomy v1.

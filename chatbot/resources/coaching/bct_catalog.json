@@ -1,0 +1,201 @@
+{
+  "catalogue_id": "sensei_d2_bcttv1_coaching_subset",
+  "version": "1.0.0",
+  "source_id": "MICHIE_BCTTV1_2013",
+  "source": "Michie et al. (2013), Behavior Change Technique Taxonomy v1",
+  "source_url": "https://doi.org/10.1007/s12160-013-9486-6",
+  "catalogue_scope": "Researcher-selected 38-technique Sensei runtime subset of the 93-item BCTTv1, suitable for consideration by a non-clinical health and wellbeing coaching Advisor. It is not the full taxonomy, not a scenario mapping, and selection is never mandatory.",
+  "redistribution_note": "Identifiers and labels follow BCTTv1. Definitions are concise runtime paraphrases; source examples and coding notes are omitted. Verify source terms before redistributing quoted taxonomy text.",
+  "entries": [
+    {
+      "id": "1.1",
+      "name": "Goal setting (behavior)",
+      "definition": "Set or mutually agree a goal expressed as the behavior the person intends to perform."
+    },
+    {
+      "id": "1.2",
+      "name": "Problem solving",
+      "definition": "Analyse influences on the behavior with the person and identify strategies for barriers or facilitators."
+    },
+    {
+      "id": "1.3",
+      "name": "Goal setting (outcome)",
+      "definition": "Set or mutually agree a goal expressed as a desired outcome of behavior."
+    },
+    {
+      "id": "1.4",
+      "name": "Action planning",
+      "definition": "Develop a plan that specifies when, where, how, or how often the behavior will be performed."
+    },
+    {
+      "id": "1.5",
+      "name": "Review behavior goal(s)",
+      "definition": "Review progress toward behavior goals and consider keeping, revising, or replacing them collaboratively."
+    },
+    {
+      "id": "1.6",
+      "name": "Discrepancy between current behavior and goal",
+      "definition": "Draw attention to a grounded difference between current behavior and a previously chosen goal."
+    },
+    {
+      "id": "1.7",
+      "name": "Review outcome goal(s)",
+      "definition": "Review progress toward outcome goals and consider keeping, revising, or replacing them collaboratively."
+    },
+    {
+      "id": "1.9",
+      "name": "Commitment",
+      "definition": "Invite the person to affirm or strengthen a voluntary commitment to the behavior."
+    },
+    {
+      "id": "2.2",
+      "name": "Feedback on behavior",
+      "definition": "Provide feedback based on measured or otherwise observed performance of the behavior."
+    },
+    {
+      "id": "2.3",
+      "name": "Self-monitoring of behavior",
+      "definition": "Establish a method for the person to record or observe their own behavior."
+    },
+    {
+      "id": "2.4",
+      "name": "Self-monitoring of outcome(s) of behavior",
+      "definition": "Establish a method for the person to record or observe outcomes associated with their behavior."
+    },
+    {
+      "id": "2.6",
+      "name": "Biofeedback",
+      "definition": "Provide feedback about a bodily process using an external measurement method."
+    },
+    {
+      "id": "2.7",
+      "name": "Feedback on outcome(s) of behavior",
+      "definition": "Provide feedback based on measured or otherwise observed outcomes of behavior."
+    },
+    {
+      "id": "3.1",
+      "name": "Social support (unspecified)",
+      "definition": "Advise, arrange, or encourage social support without specifying practical or emotional form."
+    },
+    {
+      "id": "3.2",
+      "name": "Social support (practical)",
+      "definition": "Advise, arrange, or encourage practical help from other people for the behavior."
+    },
+    {
+      "id": "3.3",
+      "name": "Social support (emotional)",
+      "definition": "Advise, arrange, or encourage emotional support from other people for the behavior."
+    },
+    {
+      "id": "4.1",
+      "name": "Instruction on how to perform the behavior",
+      "definition": "Explain or agree on how the behavior can be performed, within the Advisor's scope."
+    },
+    {
+      "id": "4.2",
+      "name": "Information about antecedents",
+      "definition": "Provide information about situations or events that reliably precede the behavior."
+    },
+    {
+      "id": "4.4",
+      "name": "Behavioral experiments",
+      "definition": "Agree on a safe behavioral test that lets the person examine a belief or prediction through experience."
+    },
+    {
+      "id": "5.1",
+      "name": "Information about health consequences",
+      "definition": "Provide relevant general information about health consequences without making a personal clinical claim."
+    },
+    {
+      "id": "5.3",
+      "name": "Information about social and environmental consequences",
+      "definition": "Provide information about social or environmental consequences of performing the behavior."
+    },
+    {
+      "id": "6.1",
+      "name": "Demonstration of the behavior",
+      "definition": "Show or describe a clear model of how the behavior can be performed."
+    },
+    {
+      "id": "7.1",
+      "name": "Prompts/cues",
+      "definition": "Introduce or identify a prompt that can remind the person to perform the behavior."
+    },
+    {
+      "id": "8.1",
+      "name": "Behavioral practice/rehearsal",
+      "definition": "Prompt practice or rehearsal so performance of the behavior can develop."
+    },
+    {
+      "id": "8.2",
+      "name": "Behavior substitution",
+      "definition": "Replace an unwanted behavior with a chosen alternative behavior."
+    },
+    {
+      "id": "8.3",
+      "name": "Habit formation",
+      "definition": "Encourage repeated performance in a consistent context so the behavior becomes habitual."
+    },
+    {
+      "id": "8.7",
+      "name": "Graded tasks",
+      "definition": "Begin with an achievable version of the behavior and increase difficulty in manageable stages."
+    },
+    {
+      "id": "9.1",
+      "name": "Credible source",
+      "definition": "Present relevant information as coming from a source the person can reasonably regard as credible."
+    },
+    {
+      "id": "9.2",
+      "name": "Pros and cons",
+      "definition": "Help the person consider personally relevant advantages and disadvantages of changing or not changing."
+    },
+    {
+      "id": "11.2",
+      "name": "Reduce negative emotions",
+      "definition": "Identify a non-clinical strategy intended to reduce difficult emotions that interfere with the behavior."
+    },
+    {
+      "id": "12.1",
+      "name": "Restructuring the physical environment",
+      "definition": "Change objects or features of the physical environment to support the behavior."
+    },
+    {
+      "id": "12.2",
+      "name": "Restructuring the social environment",
+      "definition": "Change the social setting or social arrangements to support the behavior."
+    },
+    {
+      "id": "12.3",
+      "name": "Avoidance/reducing exposure to cues for the behavior",
+      "definition": "Reduce exposure to environmental or social cues that prompt an unwanted behavior."
+    },
+    {
+      "id": "12.5",
+      "name": "Adding objects to the environment",
+      "definition": "Add an object to the person's environment to make the chosen behavior easier or more likely."
+    },
+    {
+      "id": "13.2",
+      "name": "Framing/reframing",
+      "definition": "Offer a different perspective on the behavior that may alter how it is understood or approached."
+    },
+    {
+      "id": "15.1",
+      "name": "Verbal persuasion about capability",
+      "definition": "Express a grounded message intended to strengthen belief in the person's ability to perform the behavior."
+    },
+    {
+      "id": "15.3",
+      "name": "Focus on past success",
+      "definition": "Invite attention to relevant behaviors or goals the person has previously accomplished."
+    },
+    {
+      "id": "15.4",
+      "name": "Self-talk",
+      "definition": "Prompt the person to use a chosen self-statement that can support performance of the behavior."
+    }
+  ]
+}

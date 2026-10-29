@@ -1,0 +1,102 @@
+{
+  "registry_version": "2.0.0",
+  "bundle_id": "d2_advisor_policy_v2",
+  "sources": [
+    {
+      "source_id": "NHS_HWBC_FRAMEWORK_V2_2026",
+      "framework": "NHS_HWB_COACH",
+      "title": "Workforce development framework for health and wellbeing coaches",
+      "version": "2",
+      "publication_year": 2026,
+      "source_url": "https://www.england.nhs.uk/long-read/workforce-development-framework-for-health-and-wellbeing-coaches-2/",
+      "prompt_resource": "advisor_policy/01_nhs_role_and_personalised_care.txt",
+      "usage": "advisor_role_and_personalised_care",
+      "rule_origin": "SOURCE_DERIVED",
+      "redistribution_note": "Runtime policy is a concise source-faithful paraphrase; verify source terms before redistributing quoted material."
+    },
+    {
+      "source_id": "NHS_SUPPORTED_SELF_MANAGEMENT",
+      "framework": "NHS_SUPPORTED_SELF_MANAGEMENT",
+      "title": "Supported self-management",
+      "version": "web guidance accessed 2026-09-09",
+      "publication_year": 2026,
+      "source_url": "https://www.england.nhs.uk/personalisedcare/supported-self-management/",
+      "prompt_resource": "advisor_policy/01_nhs_role_and_personalised_care.txt",
+      "usage": "active_equal_partnership_and_self_management",
+      "rule_origin": "SOURCE_DERIVED",
+      "redistribution_note": "Runtime policy paraphrases the guidance and does not reproduce the full page."
+    },
+    {
+      "source_id": "MICHIE_COM_B_2011",
+      "framework": "COM_B",
+      "title": "The behaviour change wheel: A new method for characterising and designing behaviour change interventions",
+      "version": "Implementation Science 6:42",
+      "publication_year": 2011,
+      "source_url": "https://doi.org/10.1186/1748-5908-6-42",
+      "prompt_resource": "advisor_policy/02_comb_framework.txt",
+      "usage": "behavioural_barrier_formulation",
+      "rule_origin": "SOURCE_DERIVED",
+      "redistribution_note": "The source is open access under CC BY 2.0; runtime text is a concise paraphrase with attribution."
+    },
+    {
+      "source_id": "MICHIE_BCTTV1_2013",
+      "framework": "BCTTV1",
+      "title": "The Behavior Change Technique Taxonomy (v1) of 93 Hierarchically Clustered Techniques",
+      "version": "v1",
+      "publication_year": 2013,
+      "source_url": "https://doi.org/10.1007/s12160-013-9486-6",
+      "prompt_resource": "advisor_policy/03_bct_framework.txt",
+      "usage": "behaviour_change_technique_catalogue",
+      "rule_origin": "SOURCE_DERIVED",
+      "redistribution_note": "The runtime catalogue preserves identifiers and labels but uses concise paraphrased definitions and omits source examples and coding notes."
+    },
+    {
+      "source_id": "ROLLNICK_MILLER_MI_1995",
+      "framework": "MOTIVATIONAL_INTERVIEWING",
+      "title": "What is Motivational Interviewing?",
+      "version": "Behavioural and Cognitive Psychotherapy 23(4)",
+      "publication_year": 1995,
+      "source_url": "https://www.cambridge.org/core/journals/behavioural-and-cognitive-psychotherapy/article/abs/what-is-motivational-interviewing/F7E8B9E777291290E6DF0FDE37999C8D",
+      "prompt_resource": "advisor_policy/04_mi_framework.txt",
+      "usage": "collaborative_person_centred_ambivalence_policy",
+      "rule_origin": "SOURCE_DERIVED",
+      "redistribution_note": "Runtime policy paraphrases the article's definition and principles; no long passage is reproduced."
+    },
+    {
+      "source_id": "MILLER_ROSE_MI_THEORY_2009",
+      "framework": "MOTIVATIONAL_INTERVIEWING",
+      "title": "Toward a Theory of Motivational Interviewing",
+      "version": "American Psychologist 64(6)",
+      "publication_year": 2009,
+      "source_url": "https://doi.org/10.1037/a0016830",
+      "prompt_resource": "advisor_policy/04_mi_framework.txt",
+      "usage": "relational_and_technical_mi_components",
+      "rule_origin": "SOURCE_DERIVED",
+      "redistribution_note": "Runtime policy contains a short source-faithful paraphrase and no measurement manual content."
+    },
+    {
+      "source_id": "RYAN_DECI_SDT_2000",
+      "framework": "SELF_DETERMINATION_THEORY",
+      "title": "Self-Determination Theory and the Facilitation of Intrinsic Motivation, Social Development, and Well-Being",
+      "version": "American Psychologist 55(1)",
+      "publication_year": 2000,
+      "source_url": "https://doi.org/10.1037/0003-066X.55.1.68",
+      "prompt_resource": "advisor_policy/05_sdt_framework.txt",
+      "usage": "autonomy_competence_relatedness_delivery_constraints",
+      "rule_origin": "SOURCE_DERIVED",
+      "redistribution_note": "Runtime policy paraphrases the three needs and does not reproduce questionnaire items or long source text."
+    },
+    {
+      "source_id": "SENSEI_INTERACTION_DEPTH_POLICY_V2",
+      "framework": "SENSEI_RUNTIME_CONTROL",
+      "title": "Sensei interaction depth and coaching scope policy",
+      "version": "2",
+      "publication_year": 2026,
+      "source_url": "",
+      "prompt_resource": "advisor_policy/06_interaction_depth_and_scope.txt",
+      "usage": "runtime_interaction_depth_and_scope",
+      "rule_origin": "SENSEI_OPERATIONAL",
+      "redistribution_note": "Internal control labels are documented as Sensei runtime policy rather than a validated external scale."
+    }
+  ]
+}

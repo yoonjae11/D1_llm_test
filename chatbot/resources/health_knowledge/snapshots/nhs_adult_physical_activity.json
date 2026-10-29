@@ -1,0 +1,25 @@
+{
+  "document_id": "nhs_adult_physical_activity",
+  "source_id": "NHS_UK",
+  "organisation": "NHS",
+  "title": "Physical activity guidelines for adults aged 19 to 64",
+  "source_url": "https://www.nhs.uk/live-well/exercise/physical-activity-guidelines-for-adults-aged-19-to-64/",
+  "retrieved_at": "2026-09-11",
+  "version": "snapshot-2026-09-11",
+  "licence": "NHS website terms / Open Government Licence; paraphrased snapshot",
+  "licence_review_status": "APPROVED",
+  "status": "ACTIVE",
+  "allowed_for_research_rag": true,
+  "content_hash": "54dc133417526cdf2248d3e8299403347fb2bcad069eb18979cbfd626333dead",
+  "content_hash_sha256": "54dc133417526cdf2248d3e8299403347fb2bcad069eb18979cbfd626333dead",
+  "chunks": [
+    {
+      "chunk_id": "weekly_activity",
+      "section_title": "Weekly activity guidance",
+      "content_hash_sha256": "54dc133417526cdf2248d3e8299403347fb2bcad069eb18979cbfd626333dead",
+      "char_start": 0,
+      "char_end": 322,
+      "text": "Adults should aim for activity every day, at least 150 minutes of moderate activity or 75 minutes of vigorous activity each week, and strengthening work for major muscle groups on at least two days. Activity should suit fitness and health; speak to a GP before restarting after a long break or when medical concerns apply."
+    }
+  ]
+}
